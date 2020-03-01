@@ -1,12 +1,16 @@
-server:
-    port: 8191
+## default connection pool
 spring:
-    cloud:
-        config:
-            server:
-                git:
-                    uri: https://github.com/jrasuljafarov/spring-cloud-config-store
-                
+    datasource:
+        hikari:
+            connectionTimeout: 20000
+            maximumPoolSize: 5
 
+        ## PostgreSQL
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: carduser
+        password: rasul123
 
-
+    #drop n create table again, good for testing, comment this in production
+    jpa:
+        hibernate:
+            ddl-auto: update
